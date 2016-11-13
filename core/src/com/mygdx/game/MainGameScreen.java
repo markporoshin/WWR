@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,7 +17,6 @@ public class MainGameScreen implements Screen{
     PerspectiveCamera cam;
     public Environment environment;
     public MyInputProcessor inputProcessor;
-    public Place p;
     public MainGameScreen(MyGdxGame game)
     {
         this.game = game;
@@ -28,17 +28,17 @@ public class MainGameScreen implements Screen{
         environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
 
         cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        cam.position.set(55f, 10f, 0f);
-        cam.lookAt(30f, 0f, 0f);
+        cam.position.set(150f, 10f, 0f);
+        //cam.position.set(0f, 100f, 0f);
+        cam.lookAt(0f, 0f, 0f);
         cam.near = 1f;
-        cam.far = 40f;
+        cam.far = 60f;
         cam.update();
-        p = new Place();
     }
 
     @Override
     public void render(float delta) {
-        p.upData(inputProcessor.touchScreen,
+        game.p.upData(inputProcessor.touchScreen,
                 inputProcessor.untouchScreen,
                 inputProcessor.draggedTouch,
                 inputProcessor.x1, inputProcessor.x2,
@@ -51,17 +51,21 @@ public class MainGameScreen implements Screen{
 
 
         game.modelBatch.begin(cam);
-        game.modelBatch.render(p.W.water, environment);
-        //game.modelBatch.render(p.B.leftBeach, environment);
-        //game.modelBatch.render(p.B.rightBeach, environment);
 
-        game.modelBatch.render(p.W1.water, environment);
-        //game.modelBatch.render(p.B1.leftBeach, environment);
-        //game.modelBatch.render(p.B1.rightBeach, environment);
+        game.modelBatch.render(game.p.W.instance, environment);
+        game.modelBatch.render(game.p.W1.instance, environment);
+        game.modelBatch.render(game.p.LB.instance, environment);
 
-        //game.modelBatch.render(o2.rightBeach, environment);
-        //game.modelBatch.render(o2.leftBeach, environment);
-        //game.modelBatch.render(o2.water, environment);
+        game.modelBatch.render(game.p.LB1.instance, environment);
+        //game.modelBatch.render(game.p.LB1.modelArr, environment);
+        //game.modelBatch.render(game.p.LB.modelArr, environment);
+
+        game.modelBatch.render(game.p.RB.instance, environment);
+        game.modelBatch.render(game.p.RB1.instance, environment);
+        //game.modelBatch.render(game.p.RB1.modelArr, environment);
+      //  game.modelBatch.render(game.p.RB.modelArr, environment);
+
+        game.modelBatch.render(game.p.R.instance, environment);
 
         game.modelBatch.end();
     }
@@ -92,10 +96,12 @@ public class MainGameScreen implements Screen{
 
     @Override
     public void dispose() {
-        p.W.model.dispose();
-        p.B.model.dispose();
-        p.W1.model.dispose();
-        p.B1.model.dispose();
+        game.p.W.model.dispose();
+        game.p.W1.model.dispose();
+        game.p.LB.model.dispose();
+        game.p.LB1.model.dispose();
+        game.p.RB.model.dispose();
+        game.p.RB1.model.dispose();
 
     }
 }

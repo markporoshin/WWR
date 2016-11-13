@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 
 public class MyGdxGame extends Game {
+	static public Place p;
 	public ModelBatch modelBatch;
 	public SpriteBatch spriteBatch;
 	public BitmapFont font, levels;
@@ -20,8 +21,11 @@ public class MyGdxGame extends Game {
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
 	@Override
 	public void create () {
+		InitThread t = new InitThread();
 		modelBatch = new ModelBatch();
 		spriteBatch  = new SpriteBatch();
+		t.run();
+
 		setFont();
 		this.setScreen(new MainMenuScreen(this));
 	}
@@ -50,5 +54,25 @@ public class MyGdxGame extends Game {
 		font.setColor(Color.WHITE); // Цвет белый
 		levels.setColor(Color.WHITE);
 		generator.dispose();
+	}
+}
+
+class InitThread implements Runnable {
+	Thread thread;
+	// Конструктор
+	InitThread() {
+		// Создаём новый второй поток
+		thread = new Thread(this);
+		thread.start(); // Запускаем поток
+	}
+
+	// Обязательный метод для интерфейса Runnable
+	public void run() {
+		try {
+			MyGdxGame.p = new Place();
+		} catch (Exception e) {
+			Gdx.app.log("Второй Поток","Прерван" + e);
+		}
+		Gdx.app.log("Второй Поток","Завершён");
 	}
 }

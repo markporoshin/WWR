@@ -18,7 +18,7 @@ public class Object {
     public ModelInstance instance;
     public ModelInstance leftBeach;
     public ModelInstance rightBeach;
-    public Array<ModelInstance> water = new Array<ModelInstance>();
+    public Array<ModelInstance> modelArr = new Array<ModelInstance>();
     public Material material;
     public Texture texture;
     public ModelBuilder modelBuilder;

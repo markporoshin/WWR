@@ -12,17 +12,34 @@ import java.util.Random;
  * Created by Mark on 24.10.2016.
  */
 public class Beach extends Object{
-    public final int sizei = 3, sizej = 5; //number of block water
-    private float mas[][] = new float[sizei][sizej];//water y offset
-    private boolean vec[][] = new boolean[sizei][sizej];//water y offset direction //true - up, false - down
-    private float size = 5;//size of block water
-    private float offsetx = -(size * (sizej-0.5f)), offsetz = -(size * (sizei-2));
-    private float beachOffsetx = (-size * (sizej) / 2), beachOffsetz =  size * (sizei - 0.5f);
-    private Random rnd = new Random();
+    final int numOfTreeX = 17, numOfTreeY = 7;//количество по высоте и количестов по ширине
+    float width = 100, height = 50;
+    float x, y, z, rand[] = new float[numOfTreeX];
+    float offsetX, offsetY;
+    Random r = new Random();
+    ModelInstance inst;
 
-    public float x = 10, z = 0;
-    public Beach(){
-        createBeach();
+
+    public Beach() {
+        x = 5;
+        y = 0;
+        z = 0.3f;
+        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/beacht.jpg"));
+        material = new Material(textureAttribute);
+        model = BaseModel.Box(width, 0.3f, height, material);
+        instance = new ModelInstance(model);
+        //instance.transform.setToTranslation(x,z,y);
+
+        offsetX = - width / 2 + width / numOfTreeX / 2;
+        offsetY = - height / 2 + height / numOfTreeY / 2;
+        setRand();
+        for(int i = 0; i < numOfTreeX; i++)
+            for (int j = 0; j < numOfTreeY; j++) {
+                inst = new ModelInstance(BaseModel.Tree());
+                //inst.transform.setToTranslation(i * width / numOfTreeX + x + offsetX, z,
+                //                                j * height / numOfTreeY + y + offsetY);
+                modelArr.add(inst);
+            }
     }
 
     @Override
@@ -33,23 +50,20 @@ public class Beach extends Object{
         beachUpdata();
     }
 
-    void createBeach(){
-        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/beach.jpg"));
-        material = new Material(textureAttribute);
-        modelBuilder = new ModelBuilder();
-        model = BaseModel.Box(size * sizej, 0.3f, size * sizei, material);
-        leftBeach = new ModelInstance(model);
-        leftBeach.transform.setToTranslation(beachOffsetx, 1.0f, beachOffsetz);
-        leftBeach.transform.rotate(1, 0, 0, -10);
-        rightBeach = new ModelInstance(model);
-        rightBeach.transform.setToTranslation(beachOffsetx, 1.0f,  -beachOffsetz);
-        rightBeach.transform.rotate(1, 0, 0, 10);
+    public void beachUpdata(){
+        instance.transform.setToTranslation(x,z,y);
+        for(int i=0,k=0; i < numOfTreeX; i++)
+            for (int j = 1; j < numOfTreeY - 1; j++){
+                modelArr.get(k).transform.setToTranslation(i * width / numOfTreeX + x + offsetX, z,
+                                                           j * height / numOfTreeY + y + offsetY);
+                modelArr.get(k++).transform.scl(0.3f);
+            }
     }
 
-    void beachUpdata(){
-        leftBeach.transform.setToTranslation(beachOffsetx + x, 1.0f, beachOffsetz + z);
-        leftBeach.transform.rotate(1, 0, 0, -10);
-        rightBeach.transform.setToTranslation(beachOffsetx + x, 1.0f, -beachOffsetz + z);
-        rightBeach.transform.rotate(1, 0, 0, 10);
+    public void setRand() {
+        for(int i = 0; i < numOfTreeX; i++){
+            for (int j = 0; j < numOfTreeY; j++)
+                rand[i] = r.nextInt() % (height / 3);
+        }
     }
 }
