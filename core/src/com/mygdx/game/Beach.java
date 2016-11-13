@@ -4,66 +4,42 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
-
-import java.util.Random;
 
 /**
- * Created by Mark on 24.10.2016.
+ * Created by Mark on 13.11.2016.
  */
 public class Beach extends Object{
-    final int numOfTreeX = 17, numOfTreeY = 7;//количество по высоте и количестов по ширине
-    float width = 100, height = 50;
-    float x, y, z, rand[] = new float[numOfTreeX];
-    float offsetX, offsetY;
-    Random r = new Random();
-    ModelInstance inst;
-
+    float width, height, sclconst;
 
     public Beach() {
+        width = 7.5f;
+        height =3;
+        sclconst = 0.015f;//соотношение координат блендера с кординатами игры
         x = 5;
         y = 0;
         z = 0.3f;
         TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/beacht.jpg"));
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
-        instance = new ModelInstance(model);
-        //instance.transform.setToTranslation(x,z,y);
-
-        offsetX = - width / 2 + width / numOfTreeX / 2;
-        offsetY = - height / 2 + height / numOfTreeY / 2;
-        setRand();
-        for(int i = 0; i < numOfTreeX; i++)
-            for (int j = 0; j < numOfTreeY; j++) {
-                inst = new ModelInstance(BaseModel.Tree());
-                //inst.transform.setToTranslation(i * width / numOfTreeX + x + offsetX, z,
-                //                                j * height / numOfTreeY + y + offsetY);
-                modelArr.add(inst);
-            }
+        modelArr.add(new ModelInstance(model));
+        model = BaseModel.Forest();
+        modelArr.add(new ModelInstance(model));
     }
 
     @Override
-    public void  updata(    boolean touchScreen,
-                            boolean untouchScreen,
-                            boolean draggedTouch,
-                            int x1, int x2, int y1, int y2, int dx, int dy) {
-        beachUpdata();
+    public void  updata() {
+        modelArr.get(0).transform.setToTranslation(x,z,y);
+
+        modelArr.get(1).transform.setToTranslation(x,z,y);
+        modelArr.get(1).transform.scl(sclconst * height);
+
+
     }
 
-    public void beachUpdata(){
-        instance.transform.setToTranslation(x,z,y);
-        for(int i=0,k=0; i < numOfTreeX; i++)
-            for (int j = 1; j < numOfTreeY - 1; j++){
-                modelArr.get(k).transform.setToTranslation(i * width / numOfTreeX + x + offsetX, z,
-                                                           j * height / numOfTreeY + y + offsetY);
-                modelArr.get(k++).transform.scl(0.3f);
-            }
-    }
-
-    public void setRand() {
-        for(int i = 0; i < numOfTreeX; i++){
-            for (int j = 0; j < numOfTreeY; j++)
-                rand[i] = r.nextInt() % (height / 3);
-        }
+    @Override
+    public void setToTransform(float x, float z, float y){
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 }

@@ -16,6 +16,7 @@ import java.util.Random;
 /**
  * Created by Mark on 24.10.2016.
  */
+
 public class BaseModel {
     static ObjLoader loader;
     static Model model = new Model();
@@ -23,56 +24,58 @@ public class BaseModel {
     static ModelBuilder modelBuilder = new ModelBuilder();
     static Random r = new Random();
 
-    static Model Tree(){
+    static Model Forest() {
         loader = new ObjLoader();
-        /*assets = new AssetManager();;
-        assets.load("model/lowpolytree.obj", Model.class);
-        model = assets.get("model/lowpolytree.obj", Model.class);*/
+        return model = loader.loadModel(Gdx.files.internal("model/forest/forst.obj"));
+    }
 
+    /*static Model Tree(){
+        loader = new ObjLoader();
         switch(Math.abs(r.nextInt() % 9)){
             case 0:
-                model = loader.loadModel(Gdx.files.internal("model/tree1.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree1.obj"));
                 break;
             case 1:
-                model = loader.loadModel(Gdx.files.internal("model/tree2.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree2.obj"));
                 break;
             case 2:
-                model = loader.loadModel(Gdx.files.internal("model/tree3.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree3.obj"));
                 break;
             case 3:
-                model = loader.loadModel(Gdx.files.internal("model/tree4.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree4.obj"));
                 break;
             case 4:
-                model = loader.loadModel(Gdx.files.internal("model/tree5.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree5.obj"));
                 break;
             case 5:
-                model = loader.loadModel(Gdx.files.internal("model/tree6.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree6.obj"));
                 break;
             case 6:
-                model = loader.loadModel(Gdx.files.internal("model/tree7.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree7.obj"));
                 break;
             case 7:
-                model = loader.loadModel(Gdx.files.internal("model/tree8.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree8.obj"));
                 break;
             case 8:
-                model = loader.loadModel(Gdx.files.internal("model/tree9.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree9.obj"));
                 break;
             default:
-                model = loader.loadModel(Gdx.files.internal("model/tree9.obj"));
+                model = loader.loadModel(Gdx.files.internal("model/tree/tree9.obj"));
                 break;
         }
 
         return model;
-    }
-    static Model Runner(){
+    }*/
+    static Model Runner() {
         loader = new ObjLoader();
         model = loader.loadModel(Gdx.files.internal("model/boat/boat.obj"));
         return model;
     }
-    static Model Box(float hight, float wight, float depth, Material material){
+
+    static Model Box(float hight, float wight, float depth, Material material) {
 
         model = modelBuilder.createBox(hight, wight, depth, material,
-                VertexAttributes.Usage.Position| VertexAttributes.Usage.Normal| VertexAttributes.Usage.TextureCoordinates);
+                VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
         return model;
     }
 }

@@ -4,36 +4,35 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
-import java.util.Random;
+public class Water extends Object{
+    float width, height;
 
-/**
- * Created by Mark on 24.10.2016.
- */
-public class Water extends Object {
-    float width = 100, height = 15;
-    float x = 5, y = 0;
-    public Water()
-    {
+    Water(){
+        width = 7.5f;
+        height = 1.5f;
+        x = 5;
+        y = 0;
+        z = 0;
         TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/Green24.png"));
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
-        instance = new ModelInstance(model);
-        //instance.transform.setToTranslation(x,0,y);
-        //instance.transform.rotate(0, 0, 1, 180);
+        modelArr.add(new ModelInstance(model));
     }
 
     @Override
-    public void  updata(    boolean touchScreen,
-                            boolean untouchScreen,
-                            boolean draggedTouch,
-                            int x1, int x2, int y1, int y2, int dx, int dy) {
-        waterUpdata();
+    public void  updata() {
+        modelArr.get(0).transform.setToTranslation(x,z,y);
+        modelArr.get(0).transform.rotate(0, 0, 1, 180);
     }
-    public void waterUpdata(){
-        instance.transform.setToTranslation(x,0,y);
-        instance.transform.rotate(0, 0, 1, 180);
+
+
+    @Override
+    public void setToTransform(float x, float z, float y){
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
 }
+
