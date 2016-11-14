@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 
-public class MyGdxGame extends Game {
+public class MyGdxGame extends Game{
 
 	public ModelBatch modelBatch;
 	public SpriteBatch spriteBatch;
@@ -23,7 +24,8 @@ public class MyGdxGame extends Game {
 	public void create () {
 		modelBatch = new ModelBatch();
 		spriteBatch  = new SpriteBatch();
-
+		InputMultiplexer multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(new MyGameInputProcessor());
 		setFont();
 		this.setScreen(new MainGameScreen(this));
 	}

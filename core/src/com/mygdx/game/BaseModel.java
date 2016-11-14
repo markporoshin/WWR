@@ -26,46 +26,10 @@ public class BaseModel {
 
     static Model Forest() {
         loader = new ObjLoader();
-        return model = loader.loadModel(Gdx.files.internal("model/forest/forst.obj"));
+        return model = loader.loadModel(Gdx.files.internal("model/forest/forest1.obj"));
     }
 
-    /*static Model Tree(){
-        loader = new ObjLoader();
-        switch(Math.abs(r.nextInt() % 9)){
-            case 0:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree1.obj"));
-                break;
-            case 1:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree2.obj"));
-                break;
-            case 2:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree3.obj"));
-                break;
-            case 3:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree4.obj"));
-                break;
-            case 4:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree5.obj"));
-                break;
-            case 5:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree6.obj"));
-                break;
-            case 6:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree7.obj"));
-                break;
-            case 7:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree8.obj"));
-                break;
-            case 8:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree9.obj"));
-                break;
-            default:
-                model = loader.loadModel(Gdx.files.internal("model/tree/tree9.obj"));
-                break;
-        }
 
-        return model;
-    }*/
     static Model Runner() {
         loader = new ObjLoader();
         model = loader.loadModel(Gdx.files.internal("model/boat/boat.obj"));

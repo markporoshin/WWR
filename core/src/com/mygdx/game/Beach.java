@@ -12,9 +12,10 @@ public class Beach extends Object{
     float width, height, sclconst;
 
     public Beach() {
-        width = 7.5f;
-        height =3;
-        sclconst = 0.015f;//соотношение координат блендера с кординатами игры
+
+        width = ObjectHelper.Bwidth;
+        height = ObjectHelper.Bheight;
+        sclconst = 0.06f * height;//соотношение координат блендера с кординатами игры
         x = 5;
         y = 0;
         z = 0.3f;
@@ -30,8 +31,8 @@ public class Beach extends Object{
     public void  updata() {
         modelArr.get(0).transform.setToTranslation(x,z,y);
 
-        modelArr.get(1).transform.setToTranslation(x,z,y);
-        modelArr.get(1).transform.scl(sclconst * height);
+        modelArr.get(1).transform.setToTranslation(x,z + 0.1f,y);
+        modelArr.get(1).transform.scl(sclconst);
 
 
     }
