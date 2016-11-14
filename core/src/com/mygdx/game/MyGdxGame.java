@@ -17,6 +17,8 @@ public class MyGdxGame extends Game{
 	public ModelBatch modelBatch;
 	public SpriteBatch spriteBatch;
 	public BitmapFont font, levels;
+	GameScreenRender GSR;
+	GameSpriteRender GSpR;
 	public int WIDTH = 720;
 	public int HEIGHT = 480;
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
@@ -24,6 +26,8 @@ public class MyGdxGame extends Game{
 	public void create () {
 		modelBatch = new ModelBatch();
 		spriteBatch  = new SpriteBatch();
+		GSR = new GameScreenRender();
+		GSpR = new GameSpriteRender();
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(new MyGameInputProcessor());
 		setFont();
@@ -39,6 +43,8 @@ public class MyGdxGame extends Game{
 	public void dispose () {
 		modelBatch.dispose();
 		spriteBatch.dispose();
+		GSpR.dispose();
+		GSR.dispose();
 		//ground.dispose();
 	}
 

@@ -28,18 +28,13 @@ public class MainGameScreen implements Screen{
     MyGdxGame game;
     PerspectiveCamera cam;
     public Environment environment;
-    GameScreenRender GSR;
-    GameSpriteRender GSpR;
-
 
 
 
     public MainGameScreen(MyGdxGame game)
     {
-
         this.game = game;
-        GSR = new GameScreenRender();
-        GSpR = new GameSpriteRender();
+        game.GSR.init();
         environment = new Environment();
         environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
         environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
@@ -58,19 +53,15 @@ public class MainGameScreen implements Screen{
 
     @Override
     public void render(float delta) {
-
-
-        GSR.reshape(Gdx.graphics.getDeltaTime());
+        game.GSR.reshape(Gdx.graphics.getDeltaTime());
         Gdx.gl.glViewport ( 0 , 0 , Gdx.graphics.getWidth (), Gdx.graphics.getHeight ());
         Gdx.gl.glClearColor( 0.178f, 0.233f, 0.238f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT|GL20.GL_DEPTH_BUFFER_BIT);
-
-
-
+        game.GSR.check(game);
         game.modelBatch.begin(cam);
-        GSR.render(game.modelBatch, environment);
+        game.GSR.render(game.modelBatch, environment);
         game.modelBatch.end();
-        GSpR.render(game.spriteBatch);
+        game.GSpR.render(game.spriteBatch);
     }
 
     @Override

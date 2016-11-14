@@ -9,7 +9,7 @@ public class Water extends Object{
     float width, height;
 
     Water(){
-        width = ObjectHelper.Wwidth;
+        width = ObjectHelper.Wwidth + 0.3f;
         height = ObjectHelper.Wheight;
         x = 5;
         y = 0;

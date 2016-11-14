@@ -35,6 +35,7 @@ public class GameSpriteRender {
         stage.addActor(label);
 
     }
+
     public void render(SpriteBatch batch){
         StringBuilder builder = new StringBuilder();
         builder.append(" FPS: ").append(Gdx.graphics.getFramesPerSecond());
@@ -47,5 +48,8 @@ public class GameSpriteRender {
         lbottuns.draw(batch);
         rbottuns.draw(batch);
         batch.end();
+    }
+    public void dispose(){
+        ;
     }
 }

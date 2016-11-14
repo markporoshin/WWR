@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
@@ -14,9 +15,9 @@ public class Object {
     public Model model;
     public Array<ModelInstance> modelArr = new Array<ModelInstance>();
     public Material material;
-    public Texture texture;
     public TimeUtils t;
-    float x, y, z;
+    public float x, y, z;
+    public Rect r;
     public Object(){
     }
 

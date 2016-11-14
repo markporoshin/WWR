@@ -42,4 +42,9 @@ public class BaseModel {
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal | VertexAttributes.Usage.TextureCoordinates);
         return model;
     }
+    static Model Stone(){
+        loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("model/stone/stone.obj"));
+        return model;
+    }
 }
