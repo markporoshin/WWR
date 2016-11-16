@@ -18,15 +18,18 @@ public class Object {
     public TimeUtils t;
     public float x, y, z;
     public Rect r;
-    public Object(){
+    public float speed, maxy;
+
+    public Object() {
     }
 
-    public void  updata(){
-
+    public void updata() {
     }
 
-    public void setToTransform(float x, float y, float z){
-
+    public void setToTransform(float x, float y, float z) {
     }
 
+
+    public void init(float speed, float maxy, float x, float y) {
+    }
 }

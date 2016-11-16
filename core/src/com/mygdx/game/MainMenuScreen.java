@@ -50,7 +50,7 @@ public class MainMenuScreen implements Screen {
         play.addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                Gdx.input.vibrate(20);
+                Gdx.input.vibrate(200);
                 return true;
             };
             @Override
@@ -65,7 +65,7 @@ public class MainMenuScreen implements Screen {
         exit.addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                Gdx.input.vibrate(20);
+                Gdx.input.vibrate(200);
                 return true;
             };
             @Override
@@ -95,12 +95,7 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
-
-
     }
-
-
 
     @Override
     public void show() {

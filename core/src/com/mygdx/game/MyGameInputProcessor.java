@@ -8,6 +8,10 @@ import com.badlogic.gdx.InputProcessor;
  */
 public class MyGameInputProcessor implements InputProcessor {
     static byte BottunState = 0;
+    private int scl = GameSpriteRender.scl;
+    private float x1 = Gdx.graphics.getWidth() / 8, y1 = 7 * Gdx.graphics.getHeight() / 8;
+    private float x2 = 7 * Gdx.graphics.getWidth() / 8 - GameSpriteRender.rbottuns.getRegionWidth(), y2 = 7 * Gdx.graphics.getHeight() / 8;
+
     @Override
     public boolean keyDown(int keycode) {
         return false;
@@ -25,12 +29,12 @@ public class MyGameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        if((screenX <= GameSpriteRender.lbottuns.getWidth() * 1.5f && screenX >= GameSpriteRender.lbottuns.getWidth() * 0.5f) &&
-                (screenY >= Gdx.graphics.getHeight()- GameSpriteRender.lbottuns.getHeight() * 1.5f && screenY <= Gdx.graphics.getHeight() - GameSpriteRender.lbottuns.getWidth() * 0.5f)) {
+        if(screenX < x1 + scl * GameSpriteRender.lbottuns.getWidth() / 2 && screenX > x1 - scl * GameSpriteRender.lbottuns.getWidth() / 2 &&
+                screenY < y1 + scl * GameSpriteRender.lbottuns.getHeight() / 2 && screenY > y1 - scl * GameSpriteRender.lbottuns.getHeight() / 2) {
             BottunState = 1;
         }
-        if((screenX >= (Gdx.graphics.getWidth()- GameSpriteRender.rbottuns.getWidth() * 1.5f) && screenX <= (Gdx.graphics.getWidth()- GameSpriteRender.rbottuns.getHeight() * 0.5f)) &&
-                (screenY >= Gdx.graphics.getHeight()- GameSpriteRender.rbottuns.getHeight() * 1.5f && screenY <= Gdx.graphics.getHeight() - GameSpriteRender.rbottuns.getWidth() * 0.5f)) {
+        if(screenX < x2 + scl * GameSpriteRender.rbottuns.getWidth() / 2 && screenX > x2 - scl * GameSpriteRender.rbottuns.getWidth() / 2 &&
+                screenY < y2 + scl * GameSpriteRender.rbottuns.getHeight() / 2 && screenY > y2 - scl * GameSpriteRender.rbottuns.getHeight() / 2) {
             BottunState = 2;
         }
         return false;
@@ -38,10 +42,7 @@ public class MyGameInputProcessor implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        if(((screenX <= GameSpriteRender.lbottuns.getWidth() * 1.5f && screenX >= GameSpriteRender.lbottuns.getWidth() * 0.5f) &&
-                (screenY >= Gdx.graphics.getHeight()- GameSpriteRender.lbottuns.getHeight() * 1.5f && screenY <= Gdx.graphics.getHeight() - GameSpriteRender.lbottuns.getWidth() * 0.5f) ||
-                screenX >= (Gdx.graphics.getWidth()- GameSpriteRender.rbottuns.getWidth() * 1.5f) && screenX <= (Gdx.graphics.getWidth()- GameSpriteRender.rbottuns.getHeight() * 0.5f)) &&
-        (screenY >= Gdx.graphics.getHeight()- GameSpriteRender.rbottuns.getHeight() * 1.5f && screenY <= Gdx.graphics.getHeight() - GameSpriteRender.rbottuns.getWidth() * 0.5f)) {
+        if(true) {
             BottunState = 0;
         }
         return false;

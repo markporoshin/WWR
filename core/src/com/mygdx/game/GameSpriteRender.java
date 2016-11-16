@@ -16,15 +16,19 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
  */
 public class GameSpriteRender {
     public static Sprite lbottuns, rbottuns;
+    public static int scl = 2;
     private Label label;
     private BitmapFont font;
     private Stage stage;
     private long startTime;
     public GameSpriteRender(){
         lbottuns = new Sprite(new Texture(Gdx.files.internal("image/left.png")));
-        lbottuns.setPosition(lbottuns.getRegionWidth() / 2, lbottuns.getRegionHeight()/2);
+        lbottuns.setPosition(Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 8 - lbottuns.getRegionHeight() / 2);
+        lbottuns.scale(scl);
+
         rbottuns = new Sprite(new Texture(Gdx.files.internal("image/right.png")));
-        rbottuns.setPosition(Gdx.graphics.getWidth()- rbottuns.getRegionWidth() * 1.5f, rbottuns.getRegionHeight()/2);
+        rbottuns.setPosition(7 * Gdx.graphics.getWidth() / 8 - rbottuns.getRegionWidth(), Gdx.graphics.getHeight() / 8 - rbottuns.getRegionHeight() / 2);
+        rbottuns.scale(scl);
 
         font = new BitmapFont();
         label = new Label(" ", new Label.LabelStyle(font, Color.WHITE));

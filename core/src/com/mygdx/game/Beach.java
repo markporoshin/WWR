@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
@@ -18,7 +19,7 @@ public class Beach extends Object{
         sclconst = 0.06f * height;//соотношение координат блендера с кординатами игры
         x = 5;
         y = 0;
-        z = 0.3f;
+        z = 0f;
         TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/beacht.jpg"));
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
@@ -29,12 +30,24 @@ public class Beach extends Object{
 
     @Override
     public void  updata() {
+        up();
         modelArr.get(0).transform.setToTranslation(x,z,y);
-
         modelArr.get(1).transform.setToTranslation(x,z + 0.1f,y);
         modelArr.get(1).transform.scl(sclconst);
 
 
+    }
+
+    @Override
+    public void init(float speed, float maxy, float x, float y){
+        this.speed = speed;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void up(){
+        if (x >= 2 * ObjectHelper.Bwidth - 0.1f) x = 0;
+        else x += speed * Gdx.graphics.getDeltaTime();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
@@ -22,10 +23,23 @@ public class Water extends Object{
 
     @Override
     public void  updata() {
+        up();
         modelArr.get(0).transform.setToTranslation(x,z,y);
         modelArr.get(0).transform.rotate(0, 0, 1, 180);
     }
 
+    @Override
+    public void init(float speed, float maxy, float x, float y){
+        this.z = -0.1f;
+        this.speed = speed;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void up(){
+        if (x <= 0) x = 2 * ObjectHelper.Wwidth;
+        else x -= speed * Gdx.graphics.getDeltaTime();
+    }
 
     @Override
     public void setToTransform(float x, float z, float y){

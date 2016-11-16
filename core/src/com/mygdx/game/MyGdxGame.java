@@ -31,7 +31,7 @@ public class MyGdxGame extends Game{
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(new MyGameInputProcessor());
 		setFont();
-		this.setScreen(new MainGameScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 
 	@Override

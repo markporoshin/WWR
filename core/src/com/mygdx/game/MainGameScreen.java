@@ -41,7 +41,7 @@ public class MainGameScreen implements Screen{
 
         cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         //cam.position.set(10f, 40f, 0f);
-        cam.position.set(13.5f, 1.5f, 0f);
+        cam.position.set(13.5f, 1.4f, 0f);
         cam.lookAt(0f, 0f, 0f);
         cam.near = 0.1f;
         cam.far = 10f;

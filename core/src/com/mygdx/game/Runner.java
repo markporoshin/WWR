@@ -26,6 +26,11 @@ public class Runner extends Object {
     }
 
     @Override
+    public void init(float speed, float maxy, float x, float y) {
+        this.setToTransform(11, 0.1f, ObjectHelper.Rx);
+    }
+
+    @Override
     public void  updata() {
         switch (MyGameInputProcessor.BottunState){
             case 1:
