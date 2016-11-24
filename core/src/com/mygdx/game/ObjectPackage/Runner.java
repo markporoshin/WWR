@@ -1,13 +1,9 @@
-package com.mygdx.game;
+package com.mygdx.game.ObjectPackage;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g3d.Material;
-import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
-import com.badlogic.gdx.math.Rectangle;
+import com.mygdx.game.GameScreen.MyGameInputProcessor;
+import com.mygdx.game.ObjectHelper;
 
 /**
  * Created by Mark on 09.11.2016.
@@ -16,18 +12,18 @@ public class Runner extends Object {
     float sclconst;
     public Runner(){
         r = new Rect( x + 0.2f, y, 2, 0.8f);
-        r.height = 0.4f;
-        r.width = 1;
-        r.x = x + 0.2f;
+        r.height = 0.1f;
+        r.width = 0.2f;
+        r.x = x + 1f;
         r.y = y;
-        sclconst = 0.3f;
+        sclconst = 0.1f;
         model = BaseModel.Runner();
         modelArr.add(new ModelInstance(model));
     }
 
     @Override
     public void init(float speed, float maxy, float x, float y) {
-        this.setToTransform(11, 0.1f, ObjectHelper.Rx);
+        this.setToTransform(ObjectHelper.Ry, 0.1f, ObjectHelper.Rx);
     }
 
     @Override

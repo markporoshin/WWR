@@ -1,25 +1,24 @@
-package com.mygdx.game;
+package com.mygdx.game.ObjectPackage;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
-import com.badlogic.gdx.math.Rectangle;
-
+import com.mygdx.game.*;
+import com.mygdx.game.ObjectPackage.Rect;
 import java.util.Random;
 
 /**
  * Created by Mark on 14.11.2016.
  */
-public class Stone extends Object {
+public class Tree extends Object {
     float maxy;
     Random rand;
-    public Stone(){
+    float scl;
+    public Tree(){
+        scl = 2;
         rand = new Random();
         r = new Rect(x, y, 0.3f, 0.3f);
-        r.width = 0.15f;
-        r.height = 0.15f;
+        r.width = 0.55f * scl;
+        r.height = 0.05f * scl;
         r.x = x;
         r.y = y;
         model = BaseModel.Stone();
@@ -35,8 +34,8 @@ public class Stone extends Object {
 
     @Override
     public void  updata() {
-        modelArr.get(0).transform.setToTranslation(x,z,y);
-        modelArr.get(0).transform.scl(0.1f);
+        modelArr.get(0).transform.setToTranslation(x,-0.1f,y);
+        modelArr.get(0).transform.scl(0.1f * scl);
         r.x = x;
         r.y = y;
         up();

@@ -1,12 +1,9 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -17,8 +14,8 @@ public class MyGdxGame extends Game{
 	public ModelBatch modelBatch;
 	public SpriteBatch spriteBatch;
 	public BitmapFont font, levels;
-	GameScreenRender GSR;
-	GameSpriteRender GSpR;
+	public com.mygdx.game.GameScreen.GameScreenRender GSR;
+	public com.mygdx.game.GameScreen.GameSpriteRender GSpR;
 	public int WIDTH = 720;
 	public int HEIGHT = 480;
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
@@ -26,10 +23,8 @@ public class MyGdxGame extends Game{
 	public void create () {
 		modelBatch = new ModelBatch();
 		spriteBatch  = new SpriteBatch();
-		GSR = new GameScreenRender();
-		GSpR = new GameSpriteRender();
-		InputMultiplexer multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(new MyGameInputProcessor());
+		GSR = new com.mygdx.game.GameScreen.GameScreenRender();
+		GSpR = new com.mygdx.game.GameScreen.GameSpriteRender();
 		setFont();
 		this.setScreen(new MainMenuScreen(this));
 	}

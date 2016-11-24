@@ -1,30 +1,24 @@
-package com.mygdx.game;
+package com.mygdx.game.ObjectPackage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
+import com.mygdx.game.*;
 
-/**
- * Created by Mark on 13.11.2016.
- */
-public class Beach extends Object{
-    float width, height, sclconst;
+public class Water extends Object {
+    float width, height;
 
-    public Beach() {
-
-        width = ObjectHelper.Bwidth;
-        height = ObjectHelper.Bheight;
-        sclconst = 0.06f * height;//соотношение координат блендера с кординатами игры
+    public Water(){
+        width = ObjectHelper.Wwidth + 0.1f;
+        height = ObjectHelper.Wheight;
         x = 5;
         y = 0;
-        z = 0f;
-        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/beacht.jpg"));
+        z = 0;
+        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/water2.png"));
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
-        modelArr.add(new ModelInstance(model));
-        model = BaseModel.Forest();
         modelArr.add(new ModelInstance(model));
     }
 
@@ -32,22 +26,20 @@ public class Beach extends Object{
     public void  updata() {
         up();
         modelArr.get(0).transform.setToTranslation(x,z,y);
-        modelArr.get(1).transform.setToTranslation(x,z + 0.1f,y);
-        modelArr.get(1).transform.scl(sclconst);
-
-
+        modelArr.get(0).transform.rotate(0, 0, 1, 180);
     }
 
     @Override
     public void init(float speed, float maxy, float x, float y){
+        this.z = -0.2f;
         this.speed = speed;
         this.x = x;
         this.y = y;
     }
 
     public void up(){
-        if (x >= 2 * ObjectHelper.Bwidth - 0.1f) x = 0;
-        else x += speed * Gdx.graphics.getDeltaTime();
+        if (x <= 0) x = 2 * ObjectHelper.Wwidth;
+        else x -= speed * Gdx.graphics.getDeltaTime();
     }
 
     @Override
@@ -56,4 +48,6 @@ public class Beach extends Object{
         this.y = y;
         this.z = z;
     }
+
 }
+

@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.ObjectPackage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -32,7 +32,7 @@ public class BaseModel {
 
     static Model Runner() {
         loader = new ObjLoader();
-        model = loader.loadModel(Gdx.files.internal("model/boat/boat.obj"));
+        model = loader.loadModel(Gdx.files.internal("model/boat.obj"));
         return model;
     }
 
@@ -44,7 +44,12 @@ public class BaseModel {
     }
     static Model Stone(){
         loader = new ObjLoader();
-        model = loader.loadModel(Gdx.files.internal("model/stone/stone.obj"));
+        switch (r.nextInt()%1) {
+            case 0:
+                model = loader.loadModel(Gdx.files.internal("model/stone/tree02.obj"));
+                break;
+
+        }
         return model;
     }
 }
