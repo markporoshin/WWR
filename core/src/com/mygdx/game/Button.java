@@ -36,7 +36,7 @@ public class Button {
         stateWait = false;
     }
     public boolean touchDown(int screenX, int screenY){
-        if(screenX < x + this.s.getWidth() / 2 && screenX > x -this.s.getWidth() / 2 &&
+        if(screenX < x + this.s.getWidth() / 2 && screenX > x - this.s.getWidth() / 2 &&
                 Gdx.graphics.getHeight() - screenY < y + this.s.getHeight() / 2  && Gdx.graphics.getHeight() - screenY > y - this.s.getHeight() / 2) {
             stateDown = true;
             stateUp = false;
@@ -47,7 +47,7 @@ public class Button {
     }
 
     public boolean touchUp(int screenX, int screenY){
-        if(Gdx.graphics.getWidth() - screenX < x + this.s.getWidth() / 2 && Gdx.graphics.getWidth() - screenX > x -this.s.getWidth() / 2 &&
+        if(screenX < x + this.s.getWidth() / 2 && screenX > x - this.s.getWidth() / 2 &&
                 Gdx.graphics.getHeight() - screenY < y + this.s.getHeight() / 2  && Gdx.graphics.getHeight() - screenY > y - this.s.getHeight() / 2) {
             stateUp = true;
             stateDown = false;

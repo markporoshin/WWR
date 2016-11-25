@@ -3,29 +3,29 @@ package com.mygdx.game.ObjectPackage;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.mygdx.game.*;
+import com.mygdx.game.ObjectHelper;
 
 import java.util.Random;
 
 /**
- * Created by Mark on 14.11.2016.
+ * Created by Mark on 24.11.2016.
  */
-public class Tree extends Object {
+public class Stone extends Object {
     float maxy;
     Random rand;
     float scl;
-    public Tree(){
+    public Stone(){
         scl = 2;
         rand = new Random();
         r = new Rect(x, y, 0.3f, 0.3f);
-        r.width = 0.45f * scl;
-        r.height = 0.05f * scl;
+        r.width = 0.12f * scl;
+        r.height = 0.12f * scl;
         r.x = x;
         r.y = y;
-        model = BaseModel.Tree();
+        model = BaseModel.Stone();
         modelArr.add(new ModelInstance(model));
-        /*material = new Material();
-        model = BaseModel.Box(2 * r.width, 0.1f,2 * r.height, material);
+       /** material = new Material();
+        model = BaseModel.Box(2*r.width, 0.1f, 2*r.height, material);
         modelArr.add(new ModelInstance(model));*/
     }
     @Override

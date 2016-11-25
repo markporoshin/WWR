@@ -22,7 +22,7 @@ public class GameSpriteRender {
     public GameSpriteRender(){
         GPS = new GamePauseScreen();
         GOS = new GameOverScreen();
-        Pause = new Button(new Sprite(new Texture(Gdx.files.internal("image/menu/pause.png"))), Gdx.graphics.getWidth() / 10, 7 * Gdx.graphics.getHeight() / 8);
+        Pause = new Button(new Sprite(new Texture(Gdx.files.internal("image/menu/pause.png"))),Gdx.graphics.getWidth() / 10, 7 * Gdx.graphics.getHeight() / 8);
         Pause.setScl(18);
         Left = new Button(new Sprite(new Texture(Gdx.files.internal("image/left.png"))), Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 8);
         Right = new Button(new Sprite(new Texture(Gdx.files.internal("image/right.png"))), 7 * Gdx.graphics.getWidth() / 8, Gdx.graphics.getHeight() / 8);

@@ -32,7 +32,9 @@ public class MyMenuInputProcessor implements InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         MainMenuScreen.play.touchDown(screenX, screenY);
         MainMenuScreen.setting.touchDown(screenX, screenY);
-        MainMenuScreen.exit.touchDown(screenX, screenY);
+        if(MainMenuScreen.exit.touchDown(screenX, screenY)){
+            Gdx.app.exit();
+        }
         return false;
     }
 
@@ -47,9 +49,9 @@ public class MyMenuInputProcessor implements InputProcessor {
         }if(MainMenuScreen.setting.getUp()){
             game.GSR.init();
             game.setScreen(new MainGameScreen(game));
-        }if(MainMenuScreen.exit.getUp()){
+        }/*if(MainMenuScreen.exit.getUp()){
            Gdx.app.exit();
-        }
+        }*/
         return false;
     }
 

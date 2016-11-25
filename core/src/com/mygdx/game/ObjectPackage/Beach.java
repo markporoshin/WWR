@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
+import com.mygdx.game.GameScreen.GameScreenRender;
 import com.mygdx.game.ObjectHelper;
 
 /**
@@ -12,9 +13,9 @@ import com.mygdx.game.ObjectHelper;
  */
 public class Beach extends Object {
     float width, height, sclconst;
-
+    private int rotate;
     public Beach() {
-
+        rotate = GameScreenRender.rot;
         width = ObjectHelper.Bwidth + 0.1f;
         height = ObjectHelper.Bheight;
         sclconst = 0.06f * height;//соотношение координат блендера с кординатами игры
@@ -33,7 +34,9 @@ public class Beach extends Object {
     public void  updata() {
         up();
         modelArr.get(0).transform.setToTranslation(x,z,y);
+        modelArr.get(0).transform.rotate(1, 0, 0, 8 * rotate);
         modelArr.get(1).transform.setToTranslation(x,z + 0.1f,y);
+        //modelArr.get(1).transform.rotate(1, 0, 0, 12 * rotate);
         modelArr.get(1).transform.scl(sclconst);
 
 

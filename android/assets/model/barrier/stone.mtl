@@ -1,10 +1,10 @@
-# Blender MTL File: 'tree1.obj'
+# Blender MTL File: 'tree.obj'
 # Material Count: 1
 
-newmtl brown.002
-Ns 94.117647
+newmtl None
+Ns 96.078431
 Ka 1.000000 1.000000 1.000000
-Kd 0.053443 0.018015 0.000000
+Kd 0.53762 0.53762 0.53762
 Ks 0.000000 0.000000 0.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
