@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.mygdx.game.Button;
+import com.mygdx.game.MyGdxGame;
 
 /**
  * Created by Mark on 14.11.2016.
@@ -32,17 +33,21 @@ public class GameSpriteRender {
         Right.init();
         MyGameInputProcessor.BottunState = 0;
     }
-    public void render(SpriteBatch batch, boolean gameOver, boolean gamePause){
+    public Command render(SpriteBatch batch, boolean gameOver, boolean gamePause){
         batch.begin();
+        //MyGdxGame.font.draw(batch,"" + GameScreenRender.stat.getInteger("highScore", 0), 4 * Gdx.graphics.getWidth() / 10, 7 * Gdx.graphics.getHeight() / 8);
+        MyGdxGame.font.draw(batch,"" + (int)GameScreenRender.time, 9 * Gdx.graphics.getWidth() / 10, 7 * Gdx.graphics.getHeight() / 8);
+        Pause.draw(batch);
         Left.draw(batch);
         Right.draw(batch);
-        Pause.draw(batch);
-        if(gameOver){
-            GOS.render(batch);
-        }else if(gamePause){
-            GPS.render(batch);
-        }
         batch.end();
+        if(gameOver){
+            return Command.GAMEOVER;
+        }else if(gamePause){
+            return Command.PAUSE;
+        }
+        return Command.GAMERENDER;
+
     }
     public void dispose(){
         ;

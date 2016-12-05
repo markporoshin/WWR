@@ -43,13 +43,13 @@ public class MyGameInputProcessor implements InputProcessor {
         }
 
         if(GameSpriteRender.Pause.touchDown(screenX, screenY)){
-            GameScreenRender.gamePause = true;
+            GameModelRender.gamePause = true;
         }
         if(GamePauseScreen.unPause.touchDown(screenX, screenY)){
-            GameScreenRender.gamePause = false;
+            GameModelRender.gamePause = false;
         }
 
-        if(GameScreenRender.gameOver) {
+        if(GameModelRender.gameOver) {
             if(GameOverScreen.rePlay.touchDown(screenX, screenY)){
                 game.GSR.init();
                 game.GSpR.init();

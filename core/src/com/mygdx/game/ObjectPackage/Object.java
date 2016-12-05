@@ -16,7 +16,7 @@ public class Object {
     public TimeUtils t;
     public float x, y, z;
     public Rect r;
-    public float speed, maxy;
+    public float speed, maxy, speedx;
 
     public Object() {
     }

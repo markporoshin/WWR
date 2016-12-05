@@ -1,44 +1,52 @@
 package com.mygdx.game.ObjectPackage;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.mygdx.game.ObjectHelper;
 
 import java.util.Random;
 
 /**
- * Created by Mark on 24.11.2016.
+ * Created by Mark on 02.12.2016.
  */
-public class Stone extends Object {
+public class Cloud extends Object {
     float maxy;
     Random rand;
     float scl;
-    public Stone(){
-        scl = 2;
+    public Cloud(){
+        scl = 4;
         rand = new Random();
         r = new Rect(x, y, 0.3f, 0.3f);
-        r.width = 0.12f * scl;
-        r.height = 0.12f * scl;
+        r.width = 0.45f * scl;
+        r.height = 0.05f * scl;
         r.x = x;
         r.y = y;
-        model = BaseModel.Stone();
+        switch (Math.abs(rand.nextInt()% 2)) {
+            case 0:
+                model = BaseModel.Cloud1();
+                break;
+            case 1:
+                model = BaseModel.Cloud2();
+                break;
+        }
         modelArr.add(new ModelInstance(model));
-       /** material = new Material();
-        model = BaseModel.Box(2*r.width, 0.1f, 2*r.height, material);
+        /*material = new Material();
+        model = BaseModel.Box(2 * r.width, 0.1f,2 * r.height, material);
         modelArr.add(new ModelInstance(model));*/
     }
     @Override
     public void init(float speed, float maxy, float x, float y){
+        speedx = 0;
         this.speed = speed;
         this.maxy = maxy;
         this.x = x;
         this.y = y;
+        z = 4 + rand.nextFloat() * 2;
     }
 
     @Override
     public void  updata() {
-        modelArr.get(0).transform.setToTranslation(x,-0.1f,y);
+        modelArr.get(0).transform.setToTranslation(x,z,y);
         //modelArr.get(1).transform.setToTranslation(x,0.1f,y);
         modelArr.get(0).transform.scl(0.1f * scl);
         r.x = x;
@@ -47,11 +55,12 @@ public class Stone extends Object {
     }
 
     private void up(){
-        if (x >= 2 * ObjectHelper.Bwidth-0.1f) {x = 0;}
-        else x += speed * Gdx.graphics.getDeltaTime();
+        if (x >= 2 * ObjectHelper.Bwidth-0.1f) {x = 0; y = y * -1 ;}
+        else {x += speed * Gdx.graphics.getDeltaTime();}
         if(x > 0 && x < 0.20f ){
-            y = (2 * rand.nextFloat()-1) * (maxy - 1.5f);
+
         }
+        speedx = 0;
     }
 
     @Override

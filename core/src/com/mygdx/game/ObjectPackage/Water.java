@@ -16,7 +16,7 @@ public class Water extends Object {
         x = 5;
         y = 0;
         z = 0;
-        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/water2.png"));
+        TextureAttribute textureAttribute = TextureAttribute.createDiffuse(new Texture("image/voda1.png"));
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
         modelArr.add(new ModelInstance(model));

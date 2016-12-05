@@ -13,7 +13,7 @@ public class MyGdxGame extends Game{
 
 	public ModelBatch modelBatch;
 	public SpriteBatch spriteBatch;
-	public BitmapFont font, levels;
+	public static BitmapFont font, levels;
 	public com.mygdx.game.GameScreen.GameScreenRender GSR;
 	public com.mygdx.game.GameScreen.GameSpriteRender GSpR;
 	public int WIDTH = 720;
@@ -38,16 +38,14 @@ public class MyGdxGame extends Game{
 	public void dispose () {
 		modelBatch.dispose();
 		spriteBatch.dispose();
-		GSpR.dispose();
-		GSR.dispose();
 		//ground.dispose();
 	}
 
 	public void setFont()
 	{
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Matreshka.ttf"));
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/font.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		param.size = Gdx.graphics.getHeight() / 18; // Размер шрифта. Я сделал его исходя из размеров экрана. Правда коряво, но вы сами можете поиграться, как вам угодно.
+		param.size = Gdx.graphics.getHeight() / 10; // Размер шрифта. Я сделал его исходя из размеров экрана. Правда коряво, но вы сами можете поиграться, как вам угодно.
 		param.characters = FONT_CHARACTERS; // Наши символы
 		font = generator.generateFont(param); // Генерируем шрифт
 		param.size = Gdx.graphics.getHeight() / 20;

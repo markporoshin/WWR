@@ -30,6 +30,7 @@ public class Tree extends Object {
     }
     @Override
     public void init(float speed, float maxy, float x, float y){
+        speedx = 0;
         this.speed = speed;
         this.maxy = maxy;
         this.x = x;
@@ -48,11 +49,11 @@ public class Tree extends Object {
 
     private void up(){
         if (x >= 2 * ObjectHelper.Bwidth-0.1f) {x = 0;}
-        else x += speed * Gdx.graphics.getDeltaTime();
+        else {x += speed * Gdx.graphics.getDeltaTime();y+=Gdx.graphics.getDeltaTime() * speedx;}
         if(x > 0 && x < 0.20f ){
             y = (2 * rand.nextFloat()-1) * (maxy - 1.5f);
-            Gdx.app.log("Stone1","position changev" + x);
         }
+        speedx = 0;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Runner extends Object {
         offset = -0.2f;
         r = new Rect( x + 0.2f, y, 2, 0.8f);
         sclconst = 0.1f;
-        r.height = 1.5f * sclconst;
+        r.height = 2.5f * sclconst;
         r.width = 6f * sclconst;
         r.x = x + offset;
         r.y = y;
@@ -53,8 +53,8 @@ public class Runner extends Object {
         r.y = y;
 
         modelArr.get(0).transform.setToTranslation(x,z,y);
-       //modelArr.get(1).transform.setToTranslation(x + offset,0.1f,y);
-        modelArr.get(0).transform.scl(sclconst);
+        //modelArr.get(1).transform.setToTranslation(x + offset,0.1f,y);
+        modelArr.get(0).transform.scl(sclconst*2);
         modelArr.get(0).transform.rotate(0, 1, 0, -90);
     }
 

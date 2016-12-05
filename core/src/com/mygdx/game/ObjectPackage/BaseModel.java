@@ -27,7 +27,7 @@ public class BaseModel extends Thread{
     @Override
     public void run() {
         super.run();
-        BaseModel b = new BaseModel();
+          
     }
 
     static Model Forest() {
@@ -37,7 +37,7 @@ public class BaseModel extends Thread{
 
     static Model Runner() {
         loader = new ObjLoader();
-        model = loader.loadModel(Gdx.files.internal("model/boat.obj"));
+        model = loader.loadModel(Gdx.files.internal("model/boat/papboat.obj"));
         return model;
     }
 
@@ -52,9 +52,24 @@ public class BaseModel extends Thread{
         model = loader.loadModel(Gdx.files.internal("model/barrier/tree02.obj"));
         return model;
     }
+    static Model downTree(){
+        loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("model/forest/down.obj"));
+        return model;
+    }
     static Model Stone(){
         loader = new ObjLoader();
         model = loader.loadModel(Gdx.files.internal("model/barrier/stone.obj"));
+        return model;
+    }
+    static Model Cloud1(){
+        loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("model/cloud/cloud.obj"));
+        return model;
+    }
+    static Model Cloud2(){
+        loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj"));
         return model;
     }
 }

@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.GameScreen.MyGameInputProcessor;
+import com.mygdx.game.ObjectPackage.BaseModel;
 
 /**
  * Created by Mark on 24.10.2016.
