@@ -12,16 +12,17 @@ import com.mygdx.game.ObjectHelper;
 public class Runner extends Object {
     float sclconst;
     float offset;
+    float rot=0;
     public Runner(){
         offset = -0.2f;
         r = new Rect( x + 0.2f, y, 2, 0.8f);
         sclconst = 0.1f;
         r.height = 2.5f * sclconst;
-        r.width = 6f * sclconst;
+        r.width = 5f * sclconst;
         r.x = x + offset;
         r.y = y;
 
-        model = BaseModel.Runner();
+        model = BaseModel.modelList.get(1);
         modelArr.add(new ModelInstance(model));
        /* material = new Material();
         model = BaseModel.Box(2*r.width, 0.1f,2 * r.height, material);
@@ -35,13 +36,24 @@ public class Runner extends Object {
 
     @Override
     public void  updata() {
+
         switch (MyGameInputProcessor.BottunState){
             case 1:
+                if(rot < 20)
+                    rot++;
                 y+= Gdx.graphics.getDeltaTime();
                 break;
             case 2:
+                if(rot > -20)
+                    rot--;
+
                 y-= Gdx.graphics.getDeltaTime();
                 break;
+            default:
+                if(rot < 0)
+                    rot++;
+                else if(rot > 0)
+                    rot--;
         }
 
         if(y > ObjectHelper.Wheight / 3)
@@ -56,6 +68,7 @@ public class Runner extends Object {
         //modelArr.get(1).transform.setToTranslation(x + offset,0.1f,y);
         modelArr.get(0).transform.scl(sclconst*2);
         modelArr.get(0).transform.rotate(0, 1, 0, -90);
+        modelArr.get(0).transform.rotate(0,1,0,rot);
     }
 
 

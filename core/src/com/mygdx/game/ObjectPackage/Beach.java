@@ -27,7 +27,16 @@ public class Beach extends Object {
         material = new Material(textureAttribute);
         model = BaseModel.Box(width, 0.3f, height, material);
         modelArr.add(new ModelInstance(model));
-        model = BaseModel.Forest();
+        model = BaseModel.modelList.get(0);
+        /*
+         modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/forest1.obj")));0
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/boat/ship.obj")));1
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/tree02.obj")));2
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/down.obj")));3
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/stone.obj")));4
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud.obj")));5
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj")));6
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/skybox/skybox.obj")));7*/
         modelArr.add(new ModelInstance(model));
     }
 

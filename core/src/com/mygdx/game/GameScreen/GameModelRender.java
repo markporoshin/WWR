@@ -11,6 +11,7 @@ import com.mygdx.game.ObjectPackage.Cloud;
 import com.mygdx.game.ObjectPackage.DownTree;
 import com.mygdx.game.ObjectPackage.Object;
 import com.mygdx.game.ObjectPackage.Runner;
+import com.mygdx.game.ObjectPackage.SkyBox;
 import com.mygdx.game.ObjectPackage.Stone;
 import com.mygdx.game.ObjectPackage.Tree;
 import com.mygdx.game.ObjectPackage.Water;
@@ -29,14 +30,9 @@ public class GameModelRender {
     public static int rot;
     //public Preferences stat = Gdx.app.getPreferences("stat");
     public GameModelRender(){
-        //speed
-        //stat.putInteger("highScore", 10);
-        //stat.flush();
         beachSpeed = 4f;
         waterSpeed = 1.5f;
         treeSpeed = 1.5f;
-
-        //init beach offect for water
         beachOffset = (ObjectHelper.Wheight + ObjectHelper.Bheight) / 2;
 
         //init Object
@@ -53,6 +49,7 @@ public class GameModelRender {
         StaticObjectArr.add(new Cloud());//8
         StaticObjectArr.add(new Cloud());//8
         StaticObjectArr.add(new Cloud());//8
+        //StaticObjectArr.add(new SkyBox());//8
 
         DynamicObjectArr.add(new Runner());//0
         DynamicObjectArr.add(new Tree());//1
@@ -71,7 +68,6 @@ public class GameModelRender {
 
         StaticObjectArr.get(0).init(waterSpeed, 0, 0, 0);
         StaticObjectArr.get(1).init(waterSpeed, 0, ObjectHelper.Wwidth, 0);
-
         StaticObjectArr.get(2).init(beachSpeed, 0,0,  beachOffset);
         StaticObjectArr.get(3).init(beachSpeed, 0, ObjectHelper.Bwidth, beachOffset);
         StaticObjectArr.get(4).init(beachSpeed, 0,0,  -beachOffset );
@@ -81,6 +77,7 @@ public class GameModelRender {
         StaticObjectArr.get(8).init(beachSpeed + 0.5f, 0, 1f * ObjectHelper.Bwidth,  -beachOffset / 3 );
         StaticObjectArr.get(8).init(beachSpeed + 0.5f, 0, 0.7f * ObjectHelper.Bwidth,  0 );
         StaticObjectArr.get(8).init(beachSpeed + 0.5f, 0, -1.5f * ObjectHelper.Bwidth,  beachOffset );
+        //StaticObjectArr.get(9).init(0, 0, 0, 0);
 
         DynamicObjectArr.get(0).init(0,0,0,0);
         DynamicObjectArr.get(1).init(treeSpeed, beachOffset, 0, -beachOffset / 1.2f);
@@ -126,7 +123,15 @@ public class GameModelRender {
                 if( o.r.Intersects(DynamicObjectArr.get(7).r) ){
                     o.speed = beachSpeed;
                 }
+
             }
+        }
+        if( DynamicObjectArr.get(1).r.Intersects(DynamicObjectArr.get(2).r) || DynamicObjectArr.get(1).r.Intersects(DynamicObjectArr.get(3).r) ){
+            DynamicObjectArr.get(1).speedx = beachSpeed / 2;
+        }else if( DynamicObjectArr.get(2).r.Intersects(DynamicObjectArr.get(1).r) || DynamicObjectArr.get(2).r.Intersects(DynamicObjectArr.get(3).r) ){
+            DynamicObjectArr.get(2).speedx = -beachSpeed / 2;
+        }else if( DynamicObjectArr.get(3).r.Intersects(DynamicObjectArr.get(2).r) || DynamicObjectArr.get(3).r.Intersects(DynamicObjectArr.get(1).r) ){
+            DynamicObjectArr.get(3).speedx = beachSpeed / 2;
         }
         if( DynamicObjectArr.get(1).r.Intersects(DynamicObjectArr.get(0).r) ){gameOver = true;}
         if( DynamicObjectArr.get(2).r.Intersects(DynamicObjectArr.get(0).r) ){gameOver = true;}

@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.g3d.Material;
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.loader.ObjLoader;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import com.badlogic.gdx.utils.Array;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -17,18 +19,23 @@ import java.util.Random;
  * Created by Mark on 24.10.2016.
  */
 
-public class BaseModel extends Thread{
+public class BaseModel{
     static ObjLoader loader;
     static Model model = new Model();
-    static AssetManager assets;
+    static public Array<Model> modelList= new Array<Model>();
     static ModelBuilder modelBuilder = new ModelBuilder();
     static Random r = new Random();
 
-    @Override
-    public void run() {
-        super.run();
-          
-    }
+    public BaseModel(){
+        loader = new ObjLoader();
+        modelList.add(loader.loadModel(Gdx.files.internal("model/forest/forest1.obj")));//0
+        modelList.add(loader.loadModel(Gdx.files.internal("model/boat/ship.obj")));//1
+        modelList.add(loader.loadModel(Gdx.files.internal("model/barrier/tree02.obj")));//2
+        modelList.add(loader.loadModel(Gdx.files.internal("model/forest/down.obj")));//3
+        modelList.add(loader.loadModel(Gdx.files.internal("model/barrier/stone.obj")));//4
+        modelList.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud.obj")));//5
+        modelList.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj")));//6
+       }
 
     static Model Forest() {
         loader = new ObjLoader();
@@ -37,7 +44,7 @@ public class BaseModel extends Thread{
 
     static Model Runner() {
         loader = new ObjLoader();
-        model = loader.loadModel(Gdx.files.internal("model/boat/papboat.obj"));
+        model = loader.loadModel(Gdx.files.internal("model/boat/ship.obj"));
         return model;
     }
 
@@ -70,6 +77,11 @@ public class BaseModel extends Thread{
     static Model Cloud2(){
         loader = new ObjLoader();
         model = loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj"));
+        return model;
+    }
+    static Model Skybox(){
+        loader = new ObjLoader();
+        model = loader.loadModel(Gdx.files.internal("model/skybox/skybox1.obj"));
         return model;
     }
 }

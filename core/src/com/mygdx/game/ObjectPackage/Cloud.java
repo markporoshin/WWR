@@ -23,14 +23,23 @@ public class Cloud extends Object {
         r.y = y;
         switch (Math.abs(rand.nextInt()% 2)) {
             case 0:
-                model = BaseModel.Cloud1();
+                model = BaseModel.modelList.get(5);
                 break;
             case 1:
-                model = BaseModel.Cloud2();
+                model = BaseModel.modelList.get(6);
                 break;
         }
         modelArr.add(new ModelInstance(model));
-        /*material = new Material();
+        /*
+         modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/forest1.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/boat/ship.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/tree02.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/down.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/stone.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj")));
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/skybox/skybox.obj")));
+        material = new Material();
         model = BaseModel.Box(2 * r.width, 0.1f,2 * r.height, material);
         modelArr.add(new ModelInstance(model));*/
     }

@@ -22,7 +22,8 @@ public class Tree extends Object {
         r.height = 0.05f * scl;
         r.x = x;
         r.y = y;
-        model = BaseModel.Tree();
+        model = BaseModel.modelList.get(2);
+
         modelArr.add(new ModelInstance(model));
         /*material = new Material();
         model = BaseModel.Box(2 * r.width, 0.1f,2 * r.height, material);

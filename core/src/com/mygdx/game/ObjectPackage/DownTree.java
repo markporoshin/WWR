@@ -24,9 +24,18 @@ public class DownTree extends Object{
         r.height = 0.45f * scl;
         r.x = x;
         r.y = y + r.height / 2;
-        model = BaseModel.downTree();
+        model = BaseModel.modelList.get(3);
         modelArr.add(new ModelInstance(model));
-       /*material = new Material();
+       /*
+
+         modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/forest1.obj")));0
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/boat/ship.obj")));1
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/tree02.obj")));2
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/forest/down.obj")));3
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/barrier/stone.obj")));4
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud.obj")));5
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/cloud/cloud1.obj")));6
+        modelArr.add(loader.loadModel(Gdx.files.internal("model/skybox/skybox.obj")));7material = new Material();
         model = BaseModel.Box(2 * r.width, 0.1f,2 * r.height, material);
         modelArr.add(new ModelInstance(model));*/
     }

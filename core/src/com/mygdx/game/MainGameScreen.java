@@ -32,6 +32,7 @@ public class MainGameScreen implements Screen{
         cam.lookAt(0f, 0f, 0f);
         cam.near = 0.1f;
         cam.far = 10f;
+        //cam.far = 100;
         cam.update();
 
 

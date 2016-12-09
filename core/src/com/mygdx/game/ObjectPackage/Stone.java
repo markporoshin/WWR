@@ -22,7 +22,7 @@ public class Stone extends Object {
         r.height = 0.12f * scl;
         r.x = x;
         r.y = y;
-        model = BaseModel.Stone();
+        model = BaseModel.modelList.get(4);
         modelArr.add(new ModelInstance(model));
        /** material = new Material();
         model = BaseModel.Box(2*r.width, 0.1f, 2*r.height, material);
